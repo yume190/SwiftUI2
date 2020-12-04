@@ -29,5 +29,3 @@ let package = Package(
             dependencies: ["SwiftUI2"]),
     ]
 )
-
-//Package.init(name: <#T##String#>, defaultLocalization: <#T##LanguageTag?#>, platforms: <#T##[SupportedPlatform]?#>, pkgConfig: <#T##String?#>, providers: <#T##[SystemPackageProvider]?#>, products: <#T##[Product]#>, dependencies: <#T##[Package.Dependency]#>, targets: <#T##[Target]#>, swiftLanguageVersions: <#T##[SwiftVersion]?#>, cLanguageStandard: <#T##CLanguageStandard?#>, cxxLanguageStandard: <#T##CXXLanguageStandard?#>)

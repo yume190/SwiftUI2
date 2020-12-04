@@ -16,6 +16,24 @@ extension HStack: _IView {
         return view
     }
 }
+public enum HorizontalAlignment {
+    /// A guide marking the leading edge of the view.
+    case leading
+
+    /// A guide marking the horizontal center of the view.
+    case center
+
+    /// A guide marking the trailing edge of the view.
+    case trailing
+    
+    internal var origin: UIStackView.Alignment {
+        switch self {
+        case .leading: return .leading
+        case .center: return .center
+        case .trailing: return .trailing
+        }
+    }
+}
 
 public struct HStack<Content: View>: View {
     public var body: Never {
@@ -24,12 +42,17 @@ public struct HStack<Content: View>: View {
 
     public let view: UIStackView
     
-    public init(alignment: UIStackView.Alignment = .center, spacing: CGFloat = 0, @ViewBuilder viewBuilder: () -> Content) {
+    public init(alignment: HorizontalAlignment = .center, spacing: CGFloat = 0, @ViewBuilder viewBuilder: () -> Content) {
         self.view = build(viewBuilder)
         self.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.axis = .horizontal
-        self.view.alignment = alignment
+        self.view.alignment = alignment.origin
         self.view.spacing = spacing
+    }
+    
+    public func distribution(_ distribution: UIStackView.Distribution) -> Self {
+        self.view.distribution = distribution
+        return self
     }
 }
 
@@ -38,18 +61,51 @@ extension VStack: _IView {
         return view
     }
 }
+
+public enum VerticalAlignment {
+    /// A guide marking the top edge of the view.
+    case top
+
+    /// A guide marking the vertical center of the view.
+    case center
+
+    /// A guide marking the bottom edge of the view.
+    case bottom
+
+    /// A guide marking the topmost text baseline view.
+    case firstTextBaseline
+
+    /// A guide marking the bottom-most text baseline in a view.
+    case lastTextBaseline
+    
+    internal var origin: UIStackView.Alignment {
+        switch self {
+        case .top: return .top
+        case .center: return .center
+        case .bottom: return .bottom
+        case .firstTextBaseline: return .firstBaseline
+        case .lastTextBaseline: return .lastBaseline
+        }
+    }
+}
+
 public struct VStack<Content: View>: View {
     public var body: Never {
         fatalError()
     }
 
     public let view: UIStackView
-    public init(alignment: UIStackView.Alignment = .center, spacing: CGFloat = 0, @ViewBuilder viewBuilder: () -> Content) {
+    public init(alignment: VerticalAlignment = .center, spacing: CGFloat = 0, @ViewBuilder viewBuilder: () -> Content) {
         self.view = build(viewBuilder)
         self.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.axis = .vertical
-        self.view.alignment = alignment
+        self.view.alignment = alignment.origin
         self.view.spacing = spacing
+    }
+    
+    public func distribution(_ distribution: UIStackView.Distribution) -> Self {
+        self.view.distribution = distribution
+        return self
     }
 }
 
