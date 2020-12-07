@@ -12,7 +12,7 @@ public protocol Stack {
 }
 
 extension HStack: _IView {
-    var _view: UIView {
+    public var _view: UIView {
         return view
     }
 }
@@ -66,7 +66,7 @@ public struct HStack<Content: View>: View {
 }
 
 extension VStack: _IView {
-    var _view: UIView {
+    public var _view: UIView {
         return view
     }
 }

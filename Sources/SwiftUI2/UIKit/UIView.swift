@@ -22,7 +22,7 @@ extension UIView: View {
 //}
 
 extension UIView: _IView {
-    var _view: UIView {
+    public var _view: UIView {
         return self
     }
 }
