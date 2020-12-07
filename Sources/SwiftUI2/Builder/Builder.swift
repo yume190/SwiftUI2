@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol Builder: AnyObject {
+public protocol Builder: AnyObject {
     associatedtype Target: Builder
     init()
     
@@ -18,7 +18,7 @@ protocol Builder: AnyObject {
     func build(_ builder: (Target) -> ()) -> Target
 }
 
-extension Builder {
+public extension Builder {
     @discardableResult
     static func build(_ builder: (Self) -> ()) -> Self {
         return Self().build(builder)
