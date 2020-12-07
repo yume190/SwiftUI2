@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol _IView {
-//    associatedtype V: UIView
-//    var view: Self.V { get }
-    var _view: UIView { get }
-}
-
 public protocol View {
     associatedtype Body: View
     
@@ -26,10 +20,12 @@ extension View {
             return i._view
         }
         
-        if let i = self.body as? _IView {
-            return i._view
-        }
-        
-        return nil
+//        if let i = self.body as? _IView {
+//            return i._view
+//        }
+//
+//        return nil
+        guard !(self.body is Never) else { return nil }
+        return self.body.ui
     }
 }

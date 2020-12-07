@@ -7,6 +7,7 @@
 
 import UIKit
 
+#warning("TODO layout")
 public enum Axis {
     public enum Set {
         case horizontal
@@ -32,16 +33,16 @@ extension UILayoutGuide: Anchors {}
 
 extension UIScrollView {
     var frameAnchors: Anchors {
-//        if #available(iOS 11.0, *) {
-//            return self.frameLayoutGuide
-//        }
+        if #available(iOS 11.0, *) {
+            return self.frameLayoutGuide
+        }
         return self
     }
     
     var contentAnchors: Anchors {
-//        if #available(iOS 11.0, *) {
-//            return self.contentLayoutGuide
-//        }
+        if #available(iOS 11.0, *) {
+            return self.contentLayoutGuide
+        }
         return self
     }
 }
@@ -55,7 +56,6 @@ public struct ScrollView<Content: View>: View {
     public var body: Never {
         fatalError()
     }
-//    public init(_ axes: Axis.Set = .vertical, showsIndicators: Bool = true, @ViewBuilder content: () -> Content)
     public init(_ axes: Axis.Set = .vertical, showsIndicators: Bool = true, @ViewBuilder content: () -> Content) {
         self.view.translatesAutoresizingMaskIntoConstraints = false
         let scroll = self.view
