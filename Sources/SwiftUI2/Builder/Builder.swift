@@ -32,3 +32,4 @@ public extension Builder {
 }
 
 extension UIView: Builder {}
+extension UIBarItem: Builder {}
