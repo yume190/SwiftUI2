@@ -12,19 +12,23 @@ public protocol Builder: AnyObject {
     init()
     
     @discardableResult
+    @inlinable
     static func build(_ builder: (Target) -> ()) -> Target
     
     @discardableResult
+    @inlinable
     func build(_ builder: (Target) -> ()) -> Target
 }
 
 public extension Builder {
     @discardableResult
+    @inlinable
     static func build(_ builder: (Self) -> ()) -> Self {
         return Self().build(builder)
     }
     
     @discardableResult
+    @inlinable
     func build(_ builder: (Self) -> ()) -> Self {
         builder(self)
         return self
