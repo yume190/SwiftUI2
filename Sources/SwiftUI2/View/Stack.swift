@@ -12,7 +12,7 @@ public protocol Stack {
 }
 
 extension HStack: _IView {
-    public var _view: UIView {
+    public var _view: UIView? {
         return view
     }
 }
@@ -66,7 +66,7 @@ public struct HStack<Content: View>: View {
 }
 
 extension VStack: _IView {
-    public var _view: UIView {
+    public var _view: UIView? {
         return view
     }
 }
@@ -149,7 +149,6 @@ extension Stack {
 
 extension VStack: Stack {}
 extension HStack: Stack {}
-
 
 fileprivate func build<Content: View>(_ viewBuilder: () -> Content) -> UIStackView {
     let content = viewBuilder().body

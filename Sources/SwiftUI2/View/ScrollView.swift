@@ -47,7 +47,7 @@ extension UIScrollView {
     }
 }
 extension ScrollView: _IView {
-    public var _view: UIView {
+    public var _view: UIView? {
         return view
     }
 }

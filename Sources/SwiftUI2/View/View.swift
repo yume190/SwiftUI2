@@ -20,11 +20,6 @@ extension View {
             return i._view
         }
         
-//        if let i = self.body as? _IView {
-//            return i._view
-//        }
-//
-//        return nil
         guard !(self.body is Never) else { return nil }
         return self.body.ui
     }

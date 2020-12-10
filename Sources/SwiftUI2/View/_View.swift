@@ -16,7 +16,7 @@ public struct _View<V: UIView>: View {
 }
 
 extension _View: _IView {
-    public var _view: UIView {
+    public var _view: UIView? {
         return view
     }
 }
