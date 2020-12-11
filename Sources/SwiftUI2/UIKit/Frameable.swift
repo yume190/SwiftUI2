@@ -13,12 +13,6 @@ public protocol Frameable {
 //    var heightConstraint: NSLayoutConstraint { get }
 }
 
-extension Frameable {
-    var _views: [UIView] {
-        []
-    }
-}
-
 extension View where Self: Frameable {
     public func frame(width: CGFloat? = nil, height: CGFloat? = nil, alignment: Alignment = .center) -> Self {
         if let _width = width {

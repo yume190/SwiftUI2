@@ -7,7 +7,8 @@
 
 import UIKit
 
-#warning("TODO layout")
+// [Easier Scrolling With Layout Guides](https://useyourloaf.com/blog/easier-scrolling-with-layout-guides/)
+
 public enum Axis {
     public enum Set {
         case horizontal
@@ -78,11 +79,19 @@ public struct ScrollView<Content: View>: View {
         case .vertical:
             scroll.showsVerticalScrollIndicator = showsIndicators
             scroll.showsHorizontalScrollIndicator = false
-            constraints.append(scroll.contentAnchors.widthAnchor.constraint(equalTo: stack.widthAnchor))
+            if #available(iOS 11.0, *) {
+                constraints.append(scroll.contentAnchors.widthAnchor.constraint(equalTo: scroll.frameAnchors.widthAnchor))
+            } else {
+                constraints.append(scroll.contentAnchors.widthAnchor.constraint(equalTo: stack.widthAnchor))
+            }
         case .horizontal:
             scroll.showsVerticalScrollIndicator = false
             scroll.showsHorizontalScrollIndicator = showsIndicators
-            constraints.append(scroll.contentAnchors.heightAnchor.constraint(equalTo: stack.heightAnchor))
+            if #available(iOS 11.0, *) {
+                constraints.append(scroll.contentAnchors.heightAnchor.constraint(equalTo: scroll.frameAnchors.heightAnchor))
+            } else {
+                constraints.append(scroll.contentAnchors.heightAnchor.constraint(equalTo: stack.heightAnchor))
+            }
         }
         NSLayoutConstraint.activate(constraints)
     }
