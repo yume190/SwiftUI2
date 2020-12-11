@@ -23,3 +23,20 @@ extension View {
         return self.body._views
     }
 }
+
+extension Optional: View where Wrapped: View {
+    public var body: Never {
+        fatalError()
+    }
+}
+
+extension Optional: Container where Wrapped: View {
+    var _views: [UIView] {
+        switch self {
+        case .some(let view):
+            return view._views
+        case .none:
+            return []
+        }
+    }
+}

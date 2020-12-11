@@ -22,3 +22,9 @@ extension UIView: Frameable {
         return self
     }
 }
+
+extension UIView: Container {
+    public var _views: [UIView] {
+        return [self]
+    }
+}

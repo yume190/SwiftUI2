@@ -22,10 +22,9 @@ public enum ViewBuilder {
     //        return UIStackView(arrangedSubviews: items.compactMap { $0 })
     //    }
     
-    //public static func buildIf<Content>(_ content: Content?) -> Content? where Content : View
-    //    public static func buildIf(_ value: UIView?) -> UIView? {
-    //        return value
-    //    }
+    public static func buildIf<Content>(_ content: Content?) -> Content? where Content : View {
+        return content
+    }
     
     //public static func buildLimitedAvailability<Content>(_ content: Content) -> AnyView where Content : View
 }
