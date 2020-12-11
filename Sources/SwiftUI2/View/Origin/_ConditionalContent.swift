@@ -7,28 +7,25 @@
 
 import UIKit
 
+@frozen
 public enum _ConditionalContent<TrueContent: View, FalseContent: View>: View {
     case trueContent(TrueContent)
     case falseContent(FalseContent)
     
     public typealias Body = Never
-//    public let _storage: Storage
     
-//    init(storage: Storage) {
-//        _storage = storage
-//    }
     public var body: Never {
         fatalError()
     }
 }
 
-extension _ConditionalContent: _IView {
-    public var _view: UIView? {
+extension _ConditionalContent: Container {
+    var _views: [UIView] {
         switch self {
         case .trueContent(let view):
-            return view.ui
+            return view._views
         case .falseContent(let view):
-            return view.ui
+            return view._views
         }
     }
 }

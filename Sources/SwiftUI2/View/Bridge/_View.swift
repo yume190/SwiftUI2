@@ -15,8 +15,14 @@ public struct _View<V: UIView>: View {
     }
 }
 
-extension _View: _IView {
-    public var _view: UIView? {
+extension _View: Frameable {
+    public var _view: UIView {
         return view
+    }
+}
+
+extension _View: Container {
+    var _views: [UIView] {
+        return [view]
     }
 }

@@ -7,22 +7,26 @@
 
 import UIKit
 
-public protocol _IView {
-//    associatedtype V: UIView
-//    var view: Self.V { get }
-    var _view: UIView? { get }
+public protocol Frameable {
+    var _view: UIView { get }
 //    var widthConstraint: NSLayoutConstraint { get }
 //    var heightConstraint: NSLayoutConstraint { get }
 }
 
-extension View where Self: _IView {
+extension Frameable {
+    var _views: [UIView] {
+        []
+    }
+}
+
+extension View where Self: Frameable {
     public func frame(width: CGFloat? = nil, height: CGFloat? = nil, alignment: Alignment = .center) -> Self {
         if let _width = width {
-            self._view?.widthAnchor.constraint(equalToConstant: _width).isActive = true
+            self._view.widthAnchor.constraint(equalToConstant: _width).isActive = true
         }
         
         if let _height = height {
-            self._view?.heightAnchor.constraint(equalToConstant: _height).isActive = true
+            self._view.heightAnchor.constraint(equalToConstant: _height).isActive = true
         }
         return self
     }

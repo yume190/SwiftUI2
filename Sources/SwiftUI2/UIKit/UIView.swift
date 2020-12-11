@@ -12,17 +12,13 @@ extension View where Self: UIView {
         fatalError()
     }
 }
+
 extension UIView: View {
     public typealias Body = Never
 }
-//extension UIView: View {
-//    public var body: Never {
-//        fatalError()
-//    }
-//}
 
-extension UIView: _IView {
-    public var _view: UIView? {
+extension UIView: Frameable {
+    public var _view: UIView {
         return self
     }
 }

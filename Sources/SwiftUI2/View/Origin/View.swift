@@ -14,13 +14,12 @@ public protocol View {
 }
 
 extension View {
-    var ui: UIView? {
-        
-        if let i = self as? _IView {
-            return i._view
+    var _views: [UIView] {
+        if let container = self as? Container {
+            return container._views
         }
         
-        guard !(self.body is Never) else { return nil }
-        return self.body.ui
+        guard !(self.body is Never) else { return [] }
+        return self.body._views
     }
 }

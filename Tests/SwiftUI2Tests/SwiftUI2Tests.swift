@@ -2,7 +2,7 @@ import XCTest
 @testable import SwiftUI2
 
 struct DirectionPad: View {
-    var body: VStack<[UIView]> {
+    var body: VStack<TupleView3<Text, HStack<TupleView2<Text, Text>>, Text>> {
         VStack(alignment: .center, spacing: 50) {
             Text("top")
             HStack(alignment: .center, spacing: 50) {
@@ -20,6 +20,7 @@ final class SwiftUI2Tests: XCTestCase {
             Text("")
             Text("")
         }
+        
         XCTAssertEqual(stack.view.arrangedSubviews.count, 2)
     }
     
@@ -31,18 +32,17 @@ final class SwiftUI2Tests: XCTestCase {
         }
     }
     func testTrue() {
-        let label = building(option: true).ui as! UILabel
+        let label = building(option: true)._views.first as! UILabel
         XCTAssertEqual(label.text, "a")
     }
     
     func testFalse() {
-        let label = building(option: false).ui as! UILabel
+        let label = building(option: false)._views.first as! UILabel
         XCTAssertEqual(label.text, "b")
     }
     
     func testCustom() {
         let custom = DirectionPad()
-        
         XCTAssertEqual(custom.body.view.arrangedSubviews.count, 3)
     }
     
@@ -59,6 +59,22 @@ final class SwiftUI2Tests: XCTestCase {
         }
         
         XCTAssertEqual(stack.view.arrangedSubviews.count, 2)
+    }
+    
+    func testIf() {
+        let a = true
+        let stack = VStack {
+            if a {
+                Text("a")
+                Text("b")
+            } else {
+                Text("c")
+            }
+            
+            Text("c")
+            Text("d")
+        }
+        XCTAssertEqual(stack.view.arrangedSubviews.count, 4)
     }
     
     static var allTests = [

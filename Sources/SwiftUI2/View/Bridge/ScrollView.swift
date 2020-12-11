@@ -46,11 +46,18 @@ extension UIScrollView {
         return self
     }
 }
-extension ScrollView: _IView {
-    public var _view: UIView? {
+extension ScrollView: Frameable {
+    public var _view: UIView {
         return view
     }
 }
+
+extension ScrollView: Container {
+    var _views: [UIView] {
+        return [view]
+    }
+}
+
 public struct ScrollView<Content: View>: View {
     public let view: UIScrollView = UIScrollView()
     public var body: Never {
@@ -59,7 +66,7 @@ public struct ScrollView<Content: View>: View {
     public init(_ axes: Axis.Set = .vertical, showsIndicators: Bool = true, @ViewBuilder content: () -> Content) {
         self.view.translatesAutoresizingMaskIntoConstraints = false
         let scroll = self.view
-        guard let stack = content().ui else { return }
+        guard let stack = content()._views.first else { return }
         scroll.addSubview(stack)
         var constraints: [NSLayoutConstraint] = [
             scroll.contentAnchors.leadingAnchor.constraint(equalTo: stack.leadingAnchor),
