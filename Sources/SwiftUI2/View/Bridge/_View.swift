@@ -15,8 +15,8 @@ public struct _View<V: UIView>: View {
     }
 }
 
-extension _View: Frameable {
-    public var _view: UIView {
+extension _View: UIKitBridgeable {
+    public var bridge: V {
         return view
     }
 }

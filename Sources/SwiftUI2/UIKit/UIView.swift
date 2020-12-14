@@ -17,8 +17,8 @@ extension UIView: View {
     public typealias Body = Never
 }
 
-extension UIView: Frameable {
-    public var _view: UIView {
+extension UIView: UIKitBridgeable {
+    public var bridge: UIView {
         return self
     }
 }

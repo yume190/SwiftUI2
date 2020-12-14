@@ -47,8 +47,9 @@ extension UIScrollView {
         return self
     }
 }
-extension ScrollView: Frameable {
-    public var _view: UIView {
+
+extension ScrollView: UIKitBridgeable {
+    public var bridge: UIScrollView {
         return view
     }
 }

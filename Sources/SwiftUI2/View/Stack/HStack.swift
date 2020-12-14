@@ -29,8 +29,8 @@ public struct HStack<Content: View>: View {
     }
 }
 
-extension HStack: Frameable {
-    public var _view: UIView {
+extension HStack: UIKitBridgeable {
+    public var bridge: UIStackView {
         return view
     }
 }

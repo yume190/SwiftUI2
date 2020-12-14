@@ -30,8 +30,8 @@ public struct VStack<Content: View>: View {
 }
 
 
-extension VStack: Frameable {
-    public var _view: UIView {
+extension VStack: UIKitBridgeable {
+    public var bridge: UIStackView {
         return view
     }
 }
