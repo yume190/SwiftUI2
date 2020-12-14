@@ -9,13 +9,6 @@
 import UIKit
 import SwiftUI
 
-extension SwiftUI2.View where Self.Body: UIKitBridgeable {
-    @available(iOS 13.0, *)
-    var brigdeView: UIKitBrigdeView<Self.Body.Bridge> {
-        return UIKitBrigdeView(self.body.bridge)
-    }
-}
-
 @available(iOS 13.0, *)
 public struct UIKitBrigdeView<Origin: UIView>: UIViewRepresentable {
     let origin: Origin

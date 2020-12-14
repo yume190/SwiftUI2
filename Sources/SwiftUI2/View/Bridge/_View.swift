@@ -1,5 +1,5 @@
 //
-//  SwiftUI2.swift
+//  _View.swift
 //  POC_IOS
 //
 //  Created by Yume on 2020/11/27.
