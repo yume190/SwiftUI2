@@ -7,7 +7,7 @@
 
 import UIKit
 
-public typealias Text = _View<UILabel>
+public typealias Text = BaseView<UILabel>
 public extension Text {
     
     @inlinable
