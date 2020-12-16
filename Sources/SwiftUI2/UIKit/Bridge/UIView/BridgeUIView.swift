@@ -1,16 +1,16 @@
 //
-//  File.swift
+//  BridgeUIView.swift
 //  
 //
 //  Created by Yume on 2020/12/11.
 //
 
 #if targetEnvironment(simulator)
-import UIKit
-import SwiftUI
+import class UIKit.UIView
+import protocol SwiftUI.UIViewRepresentable
 
 @available(iOS 13.0, *)
-public struct UIKitBrigdeView<Origin: UIView>: UIViewRepresentable {
+public struct BridgeUIView<Origin: UIView>: UIViewRepresentable {
     public let origin: Origin
     @inlinable
     public init(_ origin: Origin) {

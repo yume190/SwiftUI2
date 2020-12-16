@@ -1,13 +1,13 @@
 //
-//  _IView.swift
+//  Frameable.swift
 //  
 //
 //  Created by Yume on 2020/12/7.
 //
 
-import UIKit
+import struct CoreGraphics.CGFloat
 
-public protocol Frameable: UIKitBridgeable {
+public protocol Frameable: UIViewBridgeable {
 //    var _view: UIView { get }
 //    var widthConstraint: NSLayoutConstraint { get }
 //    var heightConstraint: NSLayoutConstraint { get }

@@ -5,7 +5,7 @@
 //  Created by Yume on 2020/11/27.
 //
 
-import UIKit
+import class UIKit.UIView
 
 public struct BaseView<V: UIView>: View {
     public let view: V = .init()
@@ -15,7 +15,7 @@ public struct BaseView<V: UIView>: View {
     }
 }
 
-extension BaseView: UIKitBridgeable {
+extension BaseView: UIViewBridgeable {
     public var bridge: V {
         return view
     }

@@ -5,7 +5,7 @@
 //  Created by Yume on 2020/11/27.
 //
 
-import UIKit
+import class UIKit.UIView
 
 @_functionBuilder
 public enum ViewBuilder {

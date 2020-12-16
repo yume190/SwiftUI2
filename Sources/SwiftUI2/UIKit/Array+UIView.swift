@@ -1,11 +1,11 @@
 //
-//  Array.swift
+//  Array+UIView.swift
 //  SwiftUI2
 //
 //  Created by Yume on 2020/11/27.
 //
 
-import UIKit
+import class UIKit.UIView
 
 extension Array: View where Element: UIView {
     public var body: Never {

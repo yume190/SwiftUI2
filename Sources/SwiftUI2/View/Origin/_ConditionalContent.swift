@@ -5,7 +5,7 @@
 //  Created by Yume on 2020/12/10.
 //
 
-import UIKit
+import class UIKit.UIView
 
 @frozen
 public enum _ConditionalContent<TrueContent: View, FalseContent: View>: View {

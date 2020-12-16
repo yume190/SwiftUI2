@@ -29,7 +29,7 @@ public struct VStack<Content: View>: View {
     }
 }
 
-extension VStack: UIKitBridgeable {
+extension VStack: UIViewBridgeable {
     public var bridge: UIStackView {
         return view
     }

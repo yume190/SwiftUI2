@@ -5,7 +5,8 @@
 //  Created by Yume on 2020/11/30.
 //
 
-import UIKit
+import class UIKit.UILabel
+import class UIKit.UIFont
 
 public typealias Text = BaseView<UILabel>
 public extension Text {

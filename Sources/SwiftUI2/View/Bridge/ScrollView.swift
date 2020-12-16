@@ -48,7 +48,7 @@ extension UIScrollView {
     }
 }
 
-extension ScrollView: UIKitBridgeable {
+extension ScrollView: UIViewBridgeable {
     public var bridge: UIScrollView {
         return view
     }
