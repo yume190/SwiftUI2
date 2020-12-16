@@ -5,7 +5,7 @@
 //  Created by Yume on 2020/12/11.
 //
 
-#if DEBUG
+#if targetEnvironment(simulator)
 import UIKit
 import SwiftUI
 

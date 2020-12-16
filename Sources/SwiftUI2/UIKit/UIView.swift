@@ -17,7 +17,7 @@ extension UIView: View {
     public typealias Body = Never
 }
 
-#if DEBUG
+#if targetEnvironment(simulator)
 public protocol _BridgeUIView {}
 extension _BridgeUIView where Self: UIView {
     @available(iOS 13.0, *)

@@ -12,7 +12,7 @@ public protocol UIKitBridgeable {
     var bridge: Bridge { get }
 }
 
-#if DEBUG
+#if targetEnvironment(simulator)
 extension UIKitBridgeable {
     @available(iOS 13.0, *)
     public var brigdeView: UIKitBrigdeView<Self.Bridge> {
