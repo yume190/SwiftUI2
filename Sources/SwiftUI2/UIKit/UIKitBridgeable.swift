@@ -12,6 +12,7 @@ public protocol UIKitBridgeable {
     var bridge: Bridge { get }
 }
 
+#if DEBUG
 extension UIKitBridgeable {
     @available(iOS 13.0, *)
     public var brigdeView: UIKitBrigdeView<Self.Bridge> {
@@ -25,3 +26,4 @@ extension View where Self.Body: UIKitBridgeable {
         return self.body.brigdeView
     }
 }
+#endif
