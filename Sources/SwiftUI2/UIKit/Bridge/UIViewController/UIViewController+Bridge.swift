@@ -10,7 +10,7 @@
 import class UIKit.UIViewController
 
 public protocol _BridgeUIViewController {}
-extension _BridgeUIView where Self: UIViewController {
+extension _BridgeUIViewController where Self: UIViewController {
     @available(iOS 13.0, *)
     public var brigdeView: BridgeUIViewController<Self> {
         return BridgeUIViewController(self)
