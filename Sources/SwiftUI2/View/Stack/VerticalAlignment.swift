@@ -23,6 +23,8 @@ public enum VerticalAlignment {
     /// A guide marking the bottom-most text baseline in a view.
     case lastTextBaseline
     
+    case fill
+    
     internal var origin: UIStackView.Alignment {
         switch self {
         case .top: return .top
@@ -30,6 +32,7 @@ public enum VerticalAlignment {
         case .bottom: return .bottom
         case .firstTextBaseline: return .firstBaseline
         case .lastTextBaseline: return .lastBaseline
+        case .fill: return .fill
         }
     }
 }

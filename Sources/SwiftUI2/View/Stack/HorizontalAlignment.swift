@@ -17,11 +17,14 @@ public enum HorizontalAlignment {
     /// A guide marking the trailing edge of the view.
     case trailing
     
+    case fill
+    
     internal var origin: UIStackView.Alignment {
         switch self {
         case .leading: return .leading
         case .center: return .center
         case .trailing: return .trailing
+        case .fill: return .fill
         }
     }
 }
