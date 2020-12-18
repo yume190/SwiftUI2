@@ -14,6 +14,8 @@ public protocol Frameable: UIViewBridgeable {
 }
 
 extension View where Self: Frameable {
+    @discardableResult
+    @inlinable
     public func frame(width: CGFloat? = nil, height: CGFloat? = nil, alignment: Alignment = .center) -> Self {
         if let _width = width {
             self.bridge.widthAnchor.constraint(equalToConstant: _width).isActive = true
