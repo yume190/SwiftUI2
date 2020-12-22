@@ -7,12 +7,15 @@ let package = Package(
     name: "SwiftUI2",
     platforms: [
         SupportedPlatform.iOS(.v9)
+//        SupportedPlatform.iOS(.v13)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "SwiftUI2",
-            targets: ["SwiftUI2"]),
+            type: .dynamic,
+            targets: ["SwiftUI2"]
+        ),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,7 +26,11 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SwiftUI2",
-            dependencies: []),
+            dependencies: [],
+            swiftSettings: [
+                .define("Debug", .when(configuration: .debug)),
+            ]
+        ),
         .testTarget(
             name: "SwiftUI2Tests",
             dependencies: ["SwiftUI2"]),

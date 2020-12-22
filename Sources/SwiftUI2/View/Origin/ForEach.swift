@@ -5,7 +5,7 @@
 //  Created by Yume on 2020/12/21.
 //
 
-import UIKit
+import class UIKit.UIView
 
 public struct ForEach<Data: RandomAccessCollection, Content: View>: View {
     public let data: Data
