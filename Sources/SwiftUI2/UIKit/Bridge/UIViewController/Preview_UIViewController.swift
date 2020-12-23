@@ -10,7 +10,7 @@ import class UIKit.UIViewController
 import protocol SwiftUI.UIViewControllerRepresentable
 
 @available(iOS 13.0, *)
-public struct BridgeUIViewController<Origin: UIViewController>: UIViewControllerRepresentable {
+public struct Preview_UIViewController<Origin: UIViewController>: UIViewControllerRepresentable {
     
     public let origin: Origin
     @inlinable

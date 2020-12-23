@@ -10,7 +10,7 @@ import class UIKit.UIView
 import protocol SwiftUI.UIViewRepresentable
 
 @available(iOS 13.0, *)
-public struct BridgeUIView<Origin: UIView>: UIViewRepresentable {
+public struct Preview_UIView<Origin: UIView>: UIViewRepresentable {
     public let origin: Origin
     @inlinable
     public init(_ origin: Origin) {

@@ -15,15 +15,15 @@ public protocol UIViewBridgeable {
 #if targetEnvironment(simulator)
 extension UIViewBridgeable {
     @available(iOS 13.0, *)
-    public var brigdeView: BridgeUIView<Self.Bridge> {
-        return BridgeUIView(self.bridge)
+    public var preview: Preview_UIView<Self.Bridge> {
+        return Preview_UIView(self.bridge)
     }
 }
 
 extension View where Self.Body: UIViewBridgeable {
     @available(iOS 13.0, *)
-    public var brigdeView: BridgeUIView<Self.Body.Bridge> {
-        return self.body.brigdeView
+    public var preview: Preview_UIView<Self.Body.Bridge> {
+        return self.body.preview
     }
 }
 #endif
