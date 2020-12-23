@@ -15,14 +15,14 @@ public protocol View {
 
 extension View {
     var _views: [UIView] {
-        if let container = self as? Container {
-            return container._views
-        }
-        
         if let uiview = self as? UIView {
             return [uiview]
         }
         
+        if let container = self as? Container {
+            return container._views
+        }
+
         guard !(self.body is Never) else { return [] }
         return self.body._views
     }
