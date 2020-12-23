@@ -19,6 +19,10 @@ extension View {
             return container._views
         }
         
+        if let uiview = self as? UIView {
+            return [uiview]
+        }
+        
         guard !(self.body is Never) else { return [] }
         return self.body._views
     }
