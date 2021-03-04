@@ -8,7 +8,11 @@
 import class UIKit.UIView
 
 public struct BaseView<V: UIView>: View {
-    public let view: V = .init()
+    public let view: V = {
+        let view = V()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     public var body: Never {
         fatalError()

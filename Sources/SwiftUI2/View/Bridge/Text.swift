@@ -13,7 +13,6 @@ public extension Text {
     
     @inlinable
     init(_ text: String) {
-        self.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.text = text
     }
     

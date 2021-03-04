@@ -66,7 +66,6 @@ public struct ScrollView<Content: View>: View {
         fatalError()
     }
     public init(_ axes: Axis.Set = .vertical, showsIndicators: Bool = true, @ViewBuilder content: () -> Content) {
-        self.view.translatesAutoresizingMaskIntoConstraints = false
         let scroll = self.view
         guard let stack = content()._views.first else { return }
         scroll.addSubview(stack)

@@ -21,6 +21,7 @@ public struct VStack<Content: View>: View {
         self.view.axis = .vertical
         self.view.alignment = alignment.origin
         self.view.spacing = spacing
+        self.view.distribution = .fillProportionally
     }
     
     public func distribution(_ distribution: UIStackView.Distribution) -> Self {
