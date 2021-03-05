@@ -21,7 +21,6 @@ public struct HStack<Content: View>: View {
         self.view.axis = .horizontal
         self.view.alignment = alignment.origin
         self.view.spacing = spacing
-        self.view.distribution = .fillProportionally
     }
     
     public func distribution(_ distribution: UIStackView.Distribution) -> Self {
