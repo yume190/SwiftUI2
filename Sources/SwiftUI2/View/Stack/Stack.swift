@@ -50,5 +50,3 @@ extension Stack {
         return self
     }
 }
-
-

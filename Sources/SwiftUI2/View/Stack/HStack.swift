@@ -16,7 +16,11 @@ public struct HStack<Content: View>: View {
     public let content: Content
     public init(alignment: VerticalAlignment = .center, spacing: CGFloat = 0, @ViewBuilder viewBuilder: () -> Content) {
         self.content = viewBuilder()
-        self.view = UIStackView(arrangedSubviews: self.content._views)
+        if #available(iOS 14, *) {
+            self.view = UIStackView(arrangedSubviews: self.content._views)
+        } else {
+            self.view = LayerStackView(arrangedSubviews: self.content._views)
+        }
         self.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.axis = .horizontal
         self.view.alignment = alignment.origin
