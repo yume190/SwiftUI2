@@ -11,7 +11,7 @@ import CoreGraphics
 extension UIView {
     @discardableResult
     @inlinable
-    public func frame(width: CGFloat? = nil, height: CGFloat? = nil, alignment: Alignment = .center) -> Self {
+    public func frame(width: CGFloat? = nil, height: CGFloat? = nil) -> Self {
         if let _width = width {
             self.widthAnchor.constraint(equalToConstant: _width).isActive = true
         }

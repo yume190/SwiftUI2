@@ -16,7 +16,7 @@ public protocol Frameable: UIViewBridgeable {
 extension View where Self: Frameable {
     @discardableResult
     @inlinable
-    public func frame(width: CGFloat? = nil, height: CGFloat? = nil, alignment: Alignment = .center) -> Self {
+    public func frame(width: CGFloat? = nil, height: CGFloat? = nil) -> Self {
         if let _width = width {
             self.bridge.widthAnchor.constraint(equalToConstant: _width).isActive = true
         }
@@ -26,8 +26,4 @@ extension View where Self: Frameable {
         }
         return self
     }
-}
-
-public enum Alignment: Equatable {
-    case center
 }

@@ -12,7 +12,7 @@ final class LayerStackView: UIStackView {
         return CALayer.self
     }
     
-    override var backgroundColor: UIColor? {
+    final override var backgroundColor: UIColor? {
         get {
             guard let color = self.layer.backgroundColor else {
                 return nil

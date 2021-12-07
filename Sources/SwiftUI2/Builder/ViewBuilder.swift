@@ -6,9 +6,17 @@
 //
 
 import class UIKit.UIView
+import UIKit
 
+#if swift(>=5.4)
+@resultBuilder
+public enum ViewBuilder {}
+#else
 @_functionBuilder
-public enum ViewBuilder {
+public enum ViewBuilder {}
+#endif
+
+extension ViewBuilder {
     /// public static func buildBlock() -> EmptyView
     public static func buildBlock() -> UIView {
         return UIView(frame: .zero)
@@ -27,6 +35,36 @@ public enum ViewBuilder {
     }
     
     //public static func buildLimitedAvailability<Content>(_ content: Content) -> AnyView where Content : View
+    
+    
+    
+//    public static func buildExpression(_ expression: Int) -> Spacer {
+//        return Spacer(minLength: CGFloat(expression))
+//    }
+//
+//    public static func buildExpression(_ expression: Float) -> Spacer {
+//        return Spacer(minLength: CGFloat(expression))
+//    }
+//
+//    public static func buildExpression(_ expression: Double) -> Spacer {
+//        return Spacer(minLength: CGFloat(expression))
+//    }
+//
+//    public static func buildExpression(_ expression: CGFloat) -> Spacer {
+//        return Spacer(minLength: expression)
+//    }
+//
+//    public static func buildExpression(_ expression: Never) -> Never {
+//
+//    }
+//
+//    public static func buildExpression<Content: View>(_ expression: Content) -> Content {
+//        return expression
+//    }
+//
+//    public static func buildExpression<Content: View>(_ expression: Content?) -> Content? {
+//        return expression
+//    }
 }
 
 extension ViewBuilder {

@@ -62,10 +62,15 @@ extension ScrollView: Container {
 
 public struct ScrollView<Content: View>: View {
     public let view: UIScrollView = UIScrollView()
+    private let inner: Inner
+    
     public var body: Never {
         fatalError()
     }
-    public init(_ axes: Axis.Set = .vertical, showsIndicators: Bool = true, @ViewBuilder content: () -> Content) {
+    
+    public init(_ axis: Axis.Set = .vertical, showsIndicators: Bool = true, @ViewBuilder content: () -> Content) {
+        self.inner = Inner(self.view)
+        
         let scroll = self.view
         guard let stack = content()._views.first else { return }
         scroll.addSubview(stack)
@@ -75,24 +80,58 @@ public struct ScrollView<Content: View>: View {
             scroll.contentAnchors.trailingAnchor.constraint(equalTo: stack.trailingAnchor),
             scroll.contentAnchors.bottomAnchor.constraint(equalTo: stack.bottomAnchor),
         ]
-        switch axes {
+        switch axis {
         case .vertical:
             scroll.showsVerticalScrollIndicator = showsIndicators
             scroll.showsHorizontalScrollIndicator = false
-            if #available(iOS 11.0, *) {
+//            if #available(iOS 11.0, *) {
                 constraints.append(scroll.contentAnchors.widthAnchor.constraint(equalTo: scroll.frameAnchors.widthAnchor))
-            } else {
-                constraints.append(scroll.contentAnchors.widthAnchor.constraint(equalTo: stack.widthAnchor))
-            }
+//            } else {
+//                constraints.append(scroll.contentAnchors.widthAnchor.constraint(equalTo: stack.widthAnchor))
+//            }
         case .horizontal:
             scroll.showsVerticalScrollIndicator = false
             scroll.showsHorizontalScrollIndicator = showsIndicators
-            if #available(iOS 11.0, *) {
+//            if #available(iOS 11.0, *) {
                 constraints.append(scroll.contentAnchors.heightAnchor.constraint(equalTo: scroll.frameAnchors.heightAnchor))
-            } else {
-                constraints.append(scroll.contentAnchors.heightAnchor.constraint(equalTo: stack.heightAnchor))
-            }
+//            } else {
+//                constraints.append(scroll.contentAnchors.heightAnchor.constraint(equalTo: stack.heightAnchor))
+//            }
         }
         NSLayoutConstraint.activate(constraints)
+        
+        self.setupKeyboardNotifications()
+    }
+    
+    private func setupKeyboardNotifications() {
+        self.inner.setupKeyboardNotifications()
+    }
+}
+
+extension ScrollView {
+    private final class Inner {
+        private weak var view: UIScrollView?
+        fileprivate init(_ view: UIScrollView) {
+            self.view = view
+        }
+        
+        public func setupKeyboardNotifications() {
+            NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+        
+        @objc private func handleKeyboardShow(notification: Notification) {
+            guard let value: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+            let keyboardFrame: CGRect = value.cgRectValue
+
+
+            self.view?.contentInset.bottom = keyboardFrame.height
+            self.view?.scrollIndicatorInsets.bottom = keyboardFrame.height
+        }
+
+        @objc private func handleKeyboardHide() {
+            self.view?.contentInset.bottom = 0
+            self.view?.scrollIndicatorInsets.bottom = 0
+        }
     }
 }

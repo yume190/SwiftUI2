@@ -7,6 +7,18 @@
 
 import UIKit
 
+/// Wraped UIStackView(H)
+///
+/// some summery...
+///
+/// ```swift
+/// HStack(alignment: .fill, spacing: 0) {
+///     UILabel()
+///     VStack {
+///         Text("abc")
+///     }
+/// }
+/// ```
 public struct HStack<Content: View>: View {
     public var body: Never {
         fatalError()
@@ -14,6 +26,12 @@ public struct HStack<Content: View>: View {
 
     public let view: UIStackView
     public let content: Content
+    
+    /// HStack Init
+    /// - Parameters:
+    ///   - alignment: ``HorizontalAlignment``
+    ///   - spacing: spacing between views
+    ///   - viewBuilder: ``ViewBuilder``
     public init(alignment: VerticalAlignment = .center, spacing: CGFloat = 0, @ViewBuilder viewBuilder: () -> Content) {
         self.content = viewBuilder()
         if #available(iOS 14, *) {
