@@ -84,19 +84,11 @@ public struct ScrollView<Content: View>: View {
         case .vertical:
             scroll.showsVerticalScrollIndicator = showsIndicators
             scroll.showsHorizontalScrollIndicator = false
-//            if #available(iOS 11.0, *) {
-                constraints.append(scroll.contentAnchors.widthAnchor.constraint(equalTo: scroll.frameAnchors.widthAnchor))
-//            } else {
-//                constraints.append(scroll.contentAnchors.widthAnchor.constraint(equalTo: stack.widthAnchor))
-//            }
-        case .horizontal:
+            constraints.append(scroll.contentAnchors.widthAnchor.constraint(equalTo: scroll.frameAnchors.widthAnchor))
+       case .horizontal:
             scroll.showsVerticalScrollIndicator = false
             scroll.showsHorizontalScrollIndicator = showsIndicators
-//            if #available(iOS 11.0, *) {
-                constraints.append(scroll.contentAnchors.heightAnchor.constraint(equalTo: scroll.frameAnchors.heightAnchor))
-//            } else {
-//                constraints.append(scroll.contentAnchors.heightAnchor.constraint(equalTo: stack.heightAnchor))
-//            }
+            constraints.append(scroll.contentAnchors.heightAnchor.constraint(equalTo: scroll.frameAnchors.heightAnchor))
         }
         NSLayoutConstraint.activate(constraints)
         
