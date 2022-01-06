@@ -1,21 +1,22 @@
+////
+////  UIViewController+Bridge.swift
+////
+////
+////  Created by Yume on 2020/12/16.
+////
 //
-//  UIViewController+Bridge.swift
-//  
 //
-//  Created by Yume on 2020/12/16.
+////#if targetEnvironment(simulator)
+//#if canImport(SwiftUI)
+//import UIKit
 //
-
-
-#if targetEnvironment(simulator)
-import class UIKit.UIViewController
-
-public protocol UIViewControlloerPreviewable {}
-extension UIViewControlloerPreviewable where Self: UIViewController {
-    @available(iOS 13.0, *)
-    public var preview: Preview_UIViewController<Self> {
-        return Preview_UIViewController(self)
-    }
-    
-}
-extension UIViewController: UIViewControlloerPreviewable {}
-#endif
+//public protocol UIViewControlloerPreviewable {}
+//extension UIViewControlloerPreviewable where Self: UIViewController {
+//    @available(iOS 13.0, *)
+//    public var preview: Preview_UIViewController<Self> {
+//        return Preview_UIViewController(self)
+//    }
+//    
+//}
+//extension UIViewController: UIViewControlloerPreviewable {}
+//#endif

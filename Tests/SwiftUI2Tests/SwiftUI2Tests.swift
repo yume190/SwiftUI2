@@ -11,6 +11,37 @@ final class SwiftUI2Tests: XCTestCase {
         }
     }
     
+    func testForEach() {
+        let forEach = ForEach([String].init(repeating: "abc", count: 20)) { str in
+            Text(str)
+        }
+        
+        XCTAssertEqual(forEach._views.count, 20)
+    }
+    
+    func testForEach2() {
+        let views = [String](repeating: "abc", count: 20).map { str in
+            return VStack {
+                Text(str)
+            }
+        }
+        let stack = VStack {
+            VStack {
+                Text("Hello")
+                Text("world")
+            }
+//            ForEach([String](repeating: "abc", count: 20)) { str in
+//                Text(str)
+//            }
+            ForEach(views) {
+                $0
+            }
+            
+        }
+        
+        XCTAssertEqual(stack.view.arrangedSubviews.count, 21)
+    }
+    
     func testEitherTrue() {
         let label1 = either(option: true)._views.first as! UILabel
         let label2 = either(option: true)._views.last as! UILabel
@@ -87,6 +118,20 @@ final class SwiftUI2Tests: XCTestCase {
         
         XCTAssertEqual(stack.view.arrangedSubviews.count, 3)
     }
+    
+//    func testSpacer() {
+//        let a: Int = 1
+//        let b: Float = 1
+//        let c: Double = 1
+//        let d: CGFloat = 1
+//        let stack = VStack {
+//            a
+//            b
+//            c
+//            d
+//        }
+//        XCTAssertEqual(stack.view.arrangedSubviews.count, 4)
+//    }
 
 //    static var allTests = [
 //        ("testStack", testStack),
