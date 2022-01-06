@@ -5,7 +5,7 @@
 //  Created by Yume on 2020/11/27.
 //
 
-import class UIKit.UIView
+import UIKit
 
 extension Array: View where Element: UIView {
     public var body: Never {

@@ -5,7 +5,7 @@
 //  Created by Yume on 2020/12/17.
 //
 
-import class UIKit.UIView
+import UIKit
 import CoreGraphics
 
 extension UIView {

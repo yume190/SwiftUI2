@@ -5,7 +5,7 @@
 //  Created by Yume on 2020/12/7.
 //
 
-import struct CoreGraphics.CGFloat
+import CoreGraphics
 
 public protocol Frameable: UIViewBridgeable {
 //    var _view: UIView { get }

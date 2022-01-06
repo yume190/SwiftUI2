@@ -5,9 +5,9 @@
 //  Created by Yume on 2021/12/8.
 //
 
-import class UIKit.UIView
-import class QuartzCore.CALayer
-import class UIKit.UIBarItem
+import UIKit
+import QuartzCore
+import UIKit
 
 extension UIView: InitBuilder {}
 extension CALayer: InitBuilder {}

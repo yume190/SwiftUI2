@@ -5,7 +5,7 @@
 //  Created by Yume on 2020/12/11.
 //
 
-import class UIKit.UIView
+import UIKit
 
 extension Optional: View where Wrapped: View {
     public var body: Never {

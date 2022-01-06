@@ -1,5 +1,9 @@
 # ``SwiftUI2/HStack``
 
+@Metadata {
+    @DocumentationExtension(mergeBehavior: override)
+}
+
 some summery...
 
 ## Overview

@@ -29,7 +29,7 @@ public struct HStack<Content: View>: View {
     
     /// HStack Init
     /// - Parameters:
-    ///   - alignment: ``HorizontalAlignment``
+    ///   - alignment: ``VerticalAlignment``
     ///   - spacing: spacing between views
     ///   - viewBuilder: ``ViewBuilder``
     public init(alignment: VerticalAlignment = .center, spacing: CGFloat = 0, @ViewBuilder viewBuilder: () -> Content) {
